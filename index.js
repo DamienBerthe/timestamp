@@ -27,6 +27,16 @@ app.get("/api/hello", function (req, res) {
 
 
 // listen for requests :)
-var listener = app.listen(process.env.PORT, function () {
-  console.log('Your app is listening on port ' + listener.address().port);
-});
+// var listener = app.listen(process.env.PORT, function () {
+//   console.log('Your app is listening on port ' + listener.address().port);
+// });
+
+
+const path = require('path')
+// app.set('views', path.join(__dirname, 'templates'))
+app.set('views', './views')
+app.set('view engine', 'pug')
+app.get('/home', function(req, res) {
+	res.render('index.pug', {date: new Date().toDateString()})
+})
+app.listen(3000)
