@@ -4,6 +4,7 @@
 // init project
 var express = require('express');
 var app = express();
+const PORT = process.env.PORT 
 
 // enable CORS (https://en.wikipedia.org/wiki/Cross-origin_resource_sharing)
 // so that your API is remotely testable by FCC 
@@ -39,4 +40,9 @@ app.set('view engine', 'pug')
 app.get('/home', function(req, res) {
 	res.render('index.pug', {date: new Date().toDateString()})
 })
-app.listen(3000)
+// app.listen(process.env.PORT, () => {
+//   console.log(`server started on port ${PORT}`);
+// });
+var listener = app.listen(process.env.PORT, function () {
+  console.log('Your app is listening on port ' + listener.address().port);
+});
