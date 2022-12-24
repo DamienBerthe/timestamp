@@ -43,6 +43,7 @@ app.get('/home', function(req, res) {
 // app.listen(process.env.PORT, () => {
 //   console.log(`server started on port ${PORT}`);
 // });
-var listener = app.listen(process.env.PORT, function () {
-  console.log('Your app is listening on port ' + listener.address().port);
-});
+// var listener = app.listen(process.env.PORT, function () {
+//   console.log('Your app is listening on port ' + listener.address().port);
+// });
+app.listen(10000)
