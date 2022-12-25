@@ -15,9 +15,9 @@ app.use(cors({optionsSuccessStatus: 200}));  // some legacy browsers choke on 20
 app.use(express.static('public'));
 
 // http://expressjs.com/en/starter/basic-routing.html
-app.get("/", function (req, res) {
-  res.sendFile(__dirname + '/views/index.html');
-});
+// app.get("/", function (req, res) {
+//   res.sendFile(__dirname + '/views/index.html');
+// });
 
 
 // your first API endpoint... 
@@ -36,14 +36,9 @@ app.get("/api/hello", function (req, res) {
 const path = require('path')
 // app.set('views', path.join(__dirname, 'templates'))
 app.set('views', './views')
-app.set('view engine', 'pug')
-app.get('/home', function(req, res) {
-	res.render('index.pug', {date: new Date().toDateString()})
+
+app.get('/', function(req, res) {
+	res.send({date: new Date().toDateString()})
 })
-// app.listen(process.env.PORT, () => {
-//   console.log(`server started on port ${PORT}`);
-// });
-// var listener = app.listen(process.env.PORT, function () {
-//   console.log('Your app is listening on port ' + listener.address().port);
-// });
+
 app.listen(10000)
