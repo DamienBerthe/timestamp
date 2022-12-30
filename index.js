@@ -38,7 +38,7 @@ const path = require('path')
 app.set('views', './views')
 //  let kek = 1561635345568
 //  let date = new Date(kek)
-app.get('/:kek?', function(req, res) {
+app.get('/api/:kek?', function(req, res) {
   let date = new Date()
   console.log(req.params)
   
