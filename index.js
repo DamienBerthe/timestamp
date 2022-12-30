@@ -36,9 +36,28 @@ app.get("/api/hello", function (req, res) {
 const path = require('path')
 // app.set('views', path.join(__dirname, 'templates'))
 app.set('views', './views')
-
-app.get('/', function(req, res) {
-	res.send({date: new Date().toDateString()})
+//  let kek = 1561635345568
+//  let date = new Date(kek)
+app.get('/:kek?', function(req, res) {
+  let date = new Date()
+  console.log(req.params)
+  
+  if(req.params.kek === undefined){
+    return res.json({unix : date.getTime(), utc : date.toUTCString()})
+  }
+  else if(/^\d+$/.test(req.params.kek) === true){
+    date = new Date(parseInt(req.params.kek))
+  }
+  else{
+    date = new Date(req.params.kek)
+  }
+  if(date.toUTCString() === 'Invalid Date'){
+    res.json({error: 'Invalid Date'})
+  }
+  else{
+    res.json({unix : date.getTime(), utc : date.toUTCString()})
+  }
+  
 })
 
 app.listen(10000)
